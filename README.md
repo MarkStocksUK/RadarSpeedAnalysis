@@ -5,4 +5,4 @@ An interactive Streamlit dashboard for analysing radar speed data before and aft
 - 🧠 Rolling averages and heatmaps for behavioural insights
 - 🛡️ GDPR-compliant privacy statement with user toggles
 - 🎨 Modular layout for easy extension and customization
-This dashboard aggregates anonymized behavioural data. No personal identifiers are stored or displayed. Users can toggle visibility of sensitive groupings. All visualizations are designed to protect individual privacy while enabling policy evaluation.
+This dashboard aggregates anonymized behavioural data. No personal identifiers are stored or displayed. All visualizations are designed to protect individual privacy while enabling policy evaluation.
