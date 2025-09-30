@@ -30,6 +30,10 @@ def add_sidebar(df):
     selected_sources = st.sidebar.multiselect("Radar Source", sources, default=list(sources))
     #selected_period = st.sidebar.radio("Period", ["Both", "<-Before 20 Mph", "->After 20 Mph"])
 
+    if not selected_sources:
+        st.warning("Please select at least one radar source to view data.")
+        st.stop()
+
     # --- APPLY FILTERS ---
     #if selected_period != "Both":
     #    df = df[df["Period"] == selected_period]
