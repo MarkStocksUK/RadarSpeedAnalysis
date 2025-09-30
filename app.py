@@ -66,6 +66,7 @@ def show_GDPR_statement():
 # -----------------------------
 
 def summary_stats(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Summary Statistics")
     summary = df.groupby(["Period", "Source"]).agg({
         "Average speed": "mean", # ["mean", "std"],
@@ -109,6 +110,7 @@ def summary_stats(df):
 
 # --- Speed category distribution ---
 def speed_category_distribution(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Speed Category Distribution")
 
     # --- Define Compliance Categories ---
@@ -160,12 +162,17 @@ def speed_category_distribution(df):
 
     ax1.set_ylabel("Percentage of Vehicles (%)" if view_mode == "Percentage" else "Number of Vehicles")
     ax1.set_title("Speed Compliance Before vs After Policy")
-    ax1.legend(title="Compliance Category", loc="lower center", bbox_to_anchor=(0.5, -0.25), ncol=4)
+    handles, labels = ax1.get_legend_handles_labels()
+    ax1.legend(handles[::-1], labels[::-1], title="Speed Category", loc="center left", bbox_to_anchor=(-0.35, 0.5), ncol=1)
+    #ax1.legend(title="Speed Category", loc="center right", bbox_to_anchor=(-0.15, 0.5), ncol=1)
     st.pyplot(fig1)
+    st.caption("This chart shows the split of people driving in different speed bands.")
+
 
 
 # --- Speed Distribution ---
 def speeding_distribution(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Speed Distribution")
 
     fig2, ax2 = plt.subplots(figsize=(10, 6))
@@ -185,9 +192,11 @@ def speeding_distribution(df):
     ax2.set_xlabel("Average Speed (mph)")
     ax2.set_ylabel("Percentage of Vehicles (%)")
     st.pyplot(fig2)
+    st.caption("This chart shows that more people are driving at slower speeds since the speed limit change.")
 
 # Hourly Speed Trends
 def hourly_speed_trends(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Time of day Speed Trends")
     # Ensure TimeBlock is ordered
     time_order = ["Overnight", "Early Morning", "Morning Rush", "Midday", "Afternoon", "Evening Rush", "Late Evening"]
@@ -207,6 +216,7 @@ def hourly_speed_trends(df):
 
 # Heatmap: Time of Day vs Weekday
 def plot_heatmap(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Average Speed Heatmap (Time of Day vs Weekday)")
 
     # Period toggle
@@ -246,9 +256,12 @@ def plot_heatmap(df):
     ax4.set_xlabel("")
     ax4.set_ylabel("")
     st.pyplot(fig4)
+    st.caption("This chart shows the average speed across the week and the time of day.")
+
 
 # Heatmap: Delta After vs Before
 def plot_delta_heatmap(df):
+    st.markdown("---")  # horizontal rule
     st.subheader("Change in Average Speed (After vs Before)")
 
     # Ensure Date is datetime
@@ -286,9 +299,12 @@ def plot_delta_heatmap(df):
     ax5.set_xlabel("")
     ax5.set_ylabel("")
     st.pyplot(fig5)
+    st.caption("This chart shows the change in average speed since the speed limit change.")
+
 
 # Rolling Average Speed
 def rolling_average_speed(df, POLICY_CHANGE_DATE):
+    st.markdown("---")  # horizontal rule
     st.subheader("7-Day Rolling Average Speed")
     
     # Ensure Weekday is ordered
@@ -319,10 +335,12 @@ def rolling_average_speed(df, POLICY_CHANGE_DATE):
     ax6.set_title("7-Day Rolling Average Speed")
     ax6.legend()
     st.pyplot(fig6)
+    st.caption("This chart shows the average speed since the radar signs were installed.")
 
 
 # Scatter Plot: Speed vs Time
 def scatter_speed_time(df, POLICY_CHANGE_DATE):
+    st.markdown("---")  # horizontal rule
     st.subheader("Scatter Plot: Average Speed over Time")
     
     df = df.set_index("Date")  # Set datetime index
