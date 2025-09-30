@@ -33,7 +33,8 @@ def add_sidebar(df):
     # --- APPLY FILTERS ---
     #if selected_period != "Both":
     #    df = df[df["Period"] == selected_period]
-    df = df[df["Source"].isin(selected_sources)]
+    df_filtered = df[df["Source"].isin(selected_sources)]
+    return df_filtered
 
 
 
