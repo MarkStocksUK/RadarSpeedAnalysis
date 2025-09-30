@@ -161,7 +161,7 @@ def speed_category_distribution(df):
             bottom += values
 
     ax1.set_ylabel("Percentage of Vehicles (%)" if view_mode == "Percentage" else "Number of Vehicles")
-    ax1.set_title("Speed Compliance Before vs After Policy")
+    ax1.set_title("Speed Categories Before vs After 20mph change")
     handles, labels = ax1.get_legend_handles_labels()
     ax1.legend(handles[::-1], labels[::-1], title="Speed Category", loc="center left", bbox_to_anchor=(-0.35, 0.5), ncol=1)
     #ax1.legend(title="Speed Category", loc="center right", bbox_to_anchor=(-0.15, 0.5), ncol=1)
@@ -188,7 +188,7 @@ def speeding_distribution(df):
         ax=ax2
     )
 
-    ax2.set_title("Speed Distribution Before vs After 20 MPH Limit")
+    ax2.set_title("Speed Distribution Before vs After 20 mph Limit")
     ax2.set_xlabel("Average Speed (mph)")
     ax2.set_ylabel("Percentage of Vehicles (%)")
     st.pyplot(fig2)
@@ -206,7 +206,7 @@ def hourly_speed_trends(df):
     sns.lineplot(data=hourly, x="TimeBlock", y="Average speed", hue="Period", ax=ax3)
     #fig3, ax3 = plt.subplots(figsize=(12, 6))
     #sns.barplot(data=hourly, x="Hour", y="Average speed", hue="Period", ax=ax3)
-    ax3.set_title("Average Speed by Period")
+    ax3.set_title("Average Speed by Time of Day")
     ax3.set_xlabel("")
     ax3.set_ylabel("Average Speed (mph)")
     ax3.set_xticks(range(0, 7))
@@ -262,7 +262,7 @@ def plot_heatmap(df):
 # Heatmap: Delta After vs Before
 def plot_delta_heatmap(df):
     st.markdown("---")  # horizontal rule
-    st.subheader("Change in Average Speed (After vs Before)")
+    st.subheader("Change in Average Speed since 20 mph change")
 
     # Ensure Date is datetime
     df["Date"] = pd.to_datetime(df["Date"])
@@ -295,7 +295,7 @@ def plot_delta_heatmap(df):
     # Plot
     fig5, ax5 = plt.subplots(figsize=(14, 6))
     sns.heatmap(delta_heatmap, cmap="RdBu_r", center=0, annot=True, fmt=".1f", ax=ax5)
-    ax5.set_title("Change in Average Speed by Time of Day and Weekday (After - Before)")
+    ax5.set_title("Change in Average Speed by Time of Day and Weekday (since 20 mph change)")
     ax5.set_xlabel("")
     ax5.set_ylabel("")
     st.pyplot(fig5)
