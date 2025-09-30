@@ -348,17 +348,17 @@ def main():
 
     df = load_data(CSV_PATH, SPEED_LIMIT_BEFORE, SPEED_LIMIT_AFTER, POLICY_CHANGE_DATE)
     
-    add_sidebar(df)
+    filtered_df = add_sidebar(df)
     show_GDPR_statement()
 
-    summary_stats(df)
-    speed_category_distribution(df)
-    speeding_distribution(df)
-    hourly_speed_trends(df)
-    plot_heatmap(df)
-    plot_delta_heatmap(df)
-    rolling_average_speed(df, POLICY_CHANGE_DATE)
-    scatter_speed_time(df, POLICY_CHANGE_DATE)
+    summary_stats(filtered_df)
+    speed_category_distribution(filtered_df)
+    speeding_distribution(filtered_df)
+    hourly_speed_trends(filtered_df)
+    plot_heatmap(filtered_df)
+    plot_delta_heatmap(filtered_df)
+    rolling_average_speed(filtered_df, POLICY_CHANGE_DATE)
+    scatter_speed_time(filtered_df, POLICY_CHANGE_DATE)
 
 if __name__ == "__main__":
     main()
